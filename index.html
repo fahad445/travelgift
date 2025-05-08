@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Gift Cards - The Perfect Travel Gift</title>
+    <style>
+        :root {
+            --primary: #151929;
+            --secondary: #F2B143;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(21, 25, 41, 0.8), rgba(21, 25, 41, 0.8)), 
+                        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+            background: white;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .offer-badge {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .about {
+            background-color: #f8f9fa;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <div class="logo">Voyage Gift Cards</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#" class="btn">Buy Now</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>The Perfect Gift for Travel Lovers</h1>
+            <p>Give the gift of adventure with our flexible travel gift cards. Redeemable for flights, hotels, car rentals and more worldwide.</p>
+            <a href="#" class="btn">Shop Gift Cards</a>
+        </div>
+    </section>
+    
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Redeem Your Gift Card For</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Flights</h3>
+                        <p>Select flights from all major UK airports to destinations worldwide. Your gift card can be used with all major airlines.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Accommodation</h3>
+                        <p>Book hotels, resorts, apartments and more. From budget to luxury, we have options for every traveler.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1506015391300-4802dc74de2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Taxi & Transfers</h3>
+                        <p>Pre-book airport transfers and local taxis to make your journey seamless from start to finish.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Attractions</h3>
+                        <p>Redeem your card for tickets to top attractions, tours and experiences at your destination.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Car Hire</h3>
+                        <p>Freedom to explore with rental cars from trusted providers worldwide. All vehicle types available.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <div class="offer-badge">SPECIAL OFFERS</div>
+                        <h3>Travel Packages</h3>
+                        <p>Exclusive bundled deals combining flights + hotels + experiences at discounted rates. Limited time offers available.</p>
+                        <a href="#" class="btn">View Deals</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Making Travel Gifting Simple</h3>
+                    <p>Founded in 2015, Voyage Gift Cards was created to solve a common problem - how to give the perfect travel gift that offers flexibility and choice.</p>
+                    <p>Our gift cards can be redeemed across all major travel services, from flights and hotels to experiences and transportation. Recipients can choose exactly how they want to use their gift.</p>
+                    <p>With partnerships with over 500 travel providers worldwide, we offer unbeatable value and convenience for both gift givers and recipients.</p>
+                    <a href="#" class="btn">Our Story</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Travel team">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--secondary); color: var(--primary); text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: 1.5rem;">Ready to Give the Gift of Travel?</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem;">Our gift cards are available in denominations from £25 to £500 and never expire.</p>
+            <a href="#" class="btn" style="background-color: var(--primary); color: white;">Buy Gift Card Now</a>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p class="copyright">© 2023 Voyage Gift Cards. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
