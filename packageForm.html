@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Search UI</title>
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .search-bar {
+      align-items: end;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .search-bar input,
+    .search-bar select,
+    .search-bar button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .search-bar input,
+    .search-bar select {
+      flex: 1 1;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .search-bar button {
+      background-color:  #F2B143;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-bar button:hover {
+      background-color: #091C2F;
+     
+    }
+
+    .guests-dropdown {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      width: 300px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      display: none;
+      z-index: 10;
+    }
+
+    .room {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .guest-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .label-group {
+      flex: 1;
+    }
+
+    .label-group strong {
+      display: block;
+      font-weight: bold;
+    }
+
+    .label-group small {
+      color: #888;
+      font-size: 12px;
+    }
+
+    .counter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .counter-group span {
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .guest-group button {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      border: none;
+      background: #000;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .confirm-btn {
+      background-color: #e11b22;
+      color: #fff;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .add-room-btn {
+      display: flex;
+      align-items: center;
+      color: #e11b22;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .add-room-btn span {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+
+    .toggle-link {
+      /* flex: 1 1 100%; */
+      font-size: 14px;
+      color: #0077cc;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .form-group {
+    flex: 1 1;
+    min-width: 220px
+}
+    input[type="text"],
+    select,
+    button {
+      height: 50px;
+      box-sizing: border-box;
+      width: 100%;
+      /* Ensures padding doesn't increase height */
+    }
+    .toggle-link {
+    margin-bottom: 10px;
+}
+  </style>
+</head>
+
+<body>
+  <div class="search-bar">
+
+    <!-- From -->
+    <div class="form-group">
+      <div class="toggle-link" onclick="showCountryField()">Select From Country</div>
+      <select id="fromCountrySelect" onchange="toggleAirportField()">
+        <option value="">Select From country</option>
+        <option value="Australia">Australia</option>
+        <option value="Turkey">Turkey</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Germany">Germany</option>
+        <option value="Canada">Canada</option>
+        <option value="France">France</option>
+        <option value="India">India</option>
+        <option value="Japan">Japan</option>
+        <option value="Brazil">Brazil</option>
+      </select>
+      <select id="fromAirportSelect" style="display:none">
+        <option value="">Select an airport</option>
+        <option>Sydney Kingsford Smith Airport</option>
+        <option>Istanbul Airport</option>
+        <option>JFK International</option>
+        <option>Heathrow Airport</option>
+        <option>Frankfurt Airport</option>
+        <option>Toronto Pearson Airport</option>
+        <option>Charles de Gaulle Airport</option>
+        <option>Delhi IGI Airport</option>
+        <option>Tokyo Haneda Airport</option>
+        <option>Sao Paulo GRU Airport</option>
+      </select>
+    </div>
+    <!-- Destination -->
+    <div class="form-group">
+      <div class="toggle-link" onclick="showDestinationCountryField()">Select Destination Country</div>
+      <select id="destinationCountrySelect" onchange="toggleDestinationAirportField()">
+        <option value="">Select Destination country</option>
+        <option value="Australia">Australia</option>
+        <option value="Turkey">Turkey</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Germany">Germany</option>
+        <option value="Canada">Canada</option>
+        <option value="France">France</option>
+        <option value="India">India</option>
+        <option value="Japan">Japan</option>
+        <option value="Brazil">Brazil</option>
+      </select>
+      <select id="destinationAirportSelect" style="display:none">
+        <option value="">Select an airport</option>
+        <option>Sydney Kingsford Smith Airport</option>
+        <option>Istanbul Airport</option>
+        <option>JFK International</option>
+        <option>Heathrow Airport</option>
+        <option>Frankfurt Airport</option>
+        <option>Toronto Pearson Airport</option>
+        <option>Charles de Gaulle Airport</option>
+        <option>Delhi IGI Airport</option>
+        <option>Tokyo Haneda Airport</option>
+        <option>Sao Paulo GRU Airport</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input type="date" id="departure-date" placeholder="Departure date"  />
+    </div>
+
+    <div class="form-group">
+      <input type="date" id="return-date" placeholder="Return date" />
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="guestToggle" value="2 adults / 1 room" readonly />
+    </div>
+    <div class="form-group">
+      <select id="fareType">
+          <option value="">Stay Duration</option>
+          <option value="1 Night">1 Night</option>
+          <option value="2 Night">2 Night</option>
+          <option value="3 Night">3 Night</option>
+          <option value="4 Night">4 Night</option>
+          <option value="5 Night">5 Night</option>
+          <option value="6 Night">6 Night</option>
+          <option value="7 Night">7 Night</option>
+          <option value="8 Night">8 Night</option>
+          <option value="9 Night">9 Night</option>
+          <option value="10 Night">10 Night</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+      <select id="flightType">
+          <option value="">Flight Type</option>
+          <option value="Economy">Economy</option>
+          <option value="Business">Business</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+      <select id="fareType">
+          <option value="">All Fare Types</option>
+          <option value="Inclusive Tour Fare">Inclusive Tour Fare</option>
+          <option value="Published Fare">Published Fare</option>
+          <option value="Seat Only Fare">Seat Only Fare</option>
+          <option value="All Fare Types">All Fare Types</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+      <select id="nationality">
+          <option value="">Nationality</option>
+          <option value="UK">UK</option>
+          <option value="UAE">UAE</option>
+          <option value="USA">USA</option>
+          <option value="France">France</option>
+        </select>
+      </div>
+
+    <div class="form-group">
+      <button>Search</button>
+    </div>
+
+    <div class="guests-dropdown" id="guestsDropdown"></div>
+
+
+    <script>
+      function toggleAirportField() {
+        const countrySelect = document.getElementById('fromCountrySelect');
+        const airportSelect = document.getElementById('fromAirportSelect');
+        if (countrySelect.value) {
+          countrySelect.style.display = 'none';
+          airportSelect.style.display = 'block';
+        }
+      }
+      function toggleDestinationAirportField() {
+        const countrySelect = document.getElementById('destinationCountrySelect');
+        const airportSelect = document.getElementById('destinationAirportSelect');
+        if (countrySelect.value) {
+          countrySelect.style.display = 'none';
+          airportSelect.style.display = 'block';
+        }
+      }
+
+      function showCountryField() {
+        const countrySelect = document.getElementById('fromCountrySelect');
+        const airportSelect = document.getElementById('fromAirportSelect');
+        countrySelect.style.display = 'block';
+        airportSelect.style.display = 'none';
+      }
+      function showDestinationCountryField() {
+        const countrySelect = document.getElementById('destinationCountrySelect');
+        const airportSelect = document.getElementById('destinationAirportSelect');
+        countrySelect.style.display = 'block';
+        airportSelect.style.display = 'none';
+      }
+
+      const guestToggle = document.getElementById('guestToggle');
+      const guestsDropdown = document.getElementById('guestsDropdown');
+      let rooms = [
+        { adults: 2, children: 0 }
+      ];
+
+      guestToggle.addEventListener('click', () => {
+        guestsDropdown.style.display = guestsDropdown.style.display === 'block' ? 'none' : 'block';
+        renderRooms();
+      });
+
+      function updateGuest(roomIndex, type, change) {
+        if (type === 'adults') {
+          rooms[roomIndex].adults = Math.max(1, rooms[roomIndex].adults + change);
+        } else {
+          rooms[roomIndex].children = Math.max(0, rooms[roomIndex].children + change);
+        }
+        renderRooms();
+      }
+
+      function renderRooms() {
+        guestsDropdown.innerHTML = '';
+        rooms.forEach((room, index) => {
+          const roomDiv = document.createElement('div');
+          roomDiv.className = 'room';
+          roomDiv.innerHTML = `
+          <h4>Room ${index + 1}</h4>
+
+          <div class="guest-group">
+            <div class="label-group">
+              <strong>Adults</strong>
+              <small>over 18 on the return date</small>
+            </div>
+            <div class="counter-group">
+              <button onclick="updateGuest(${index}, 'adults', -1)">-</button>
+              <span>${room.adults}</span>
+              <button onclick="updateGuest(${index}, 'adults', 1)">+</button>
+            </div>
+          </div>
+
+          <div class="guest-group">
+            <div class="label-group">
+              <strong>Children</strong>
+              <small>between 0 and 17 on the return date</small>
+            </div>
+            <div class="counter-group">
+              <button onclick="updateGuest(${index}, 'children', -1)">-</button>
+              <span>${room.children}</span>
+              <button onclick="updateGuest(${index}, 'children', 1)">+</button>
+            </div>
+          </div>
+        `;
+          guestsDropdown.appendChild(roomDiv);
+        });
+
+        const addRoomBtn = document.createElement('div');
+        addRoomBtn.className = 'add-room-btn';
+        addRoomBtn.innerHTML = '<span>+</span> Add a room';
+        addRoomBtn.onclick = () => {
+          if (rooms.length < 4) {
+            rooms.push({ adults: 1, children: 0 });
+            renderRooms();
+          }
+        };
+        guestsDropdown.appendChild(addRoomBtn);
+
+        const confirmBtn = document.createElement('button');
+        confirmBtn.className = 'confirm-btn';
+        confirmBtn.textContent = 'Confirm';
+        confirmBtn.onclick = confirmGuests;
+        guestsDropdown.appendChild(confirmBtn);
+      }
+
+      function confirmGuests() {
+        const totalAdults = rooms.reduce((sum, r) => sum + r.adults, 0);
+        const totalRooms = rooms.length;
+        guestToggle.value = `${totalAdults} adult${totalAdults > 1 ? 's' : ''} / ${totalRooms} room${totalRooms > 1 ? 's' : ''}`;
+        guestsDropdown.style.display = 'none';
+      }
+    </script>
+
+    <!-- Include Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+      // Initialize the Flatpickr for departure date
+      const departureDate = flatpickr("#departure-date", {
+        dateFormat: "Y-m-d", // Format date as Year-Month-Day
+        onChange: function (selectedDates, dateStr, instance) {
+          // Update the return date min date after selecting the departure date
+          const returnMinDate = new Date(selectedDates[0]);
+          returnMinDate.setDate(returnMinDate.getDate() + 1);  // Minimum return date is 1 day after departure
+
+          // Set the min date for return date
+          returnDate.set("minDate", returnMinDate);
+        }
+      });
+
+      // Initialize the Flatpickr for return date
+      const returnDate = flatpickr("#return-date", {
+        dateFormat: "Y-m-d", // Format date as Year-Month-Day
+      });
+    </script>
+</body>
+
+</html>
